@@ -7,15 +7,16 @@ class UserService {
   }
   async getUserInfo({ id, user_name, is_admin, password }) {
     const whereOpt = {}
+    id && Object.assign(whereOpt, { id })
     user_name && Object.assign(whereOpt, { user_name })
     is_admin && Object.assign(whereOpt, { is_admin })
     password && Object.assign(whereOpt, { password })
-    id && Object.assign(whereOpt, { id })
+
     const res = await User.findOne({
       attributes: ['id', 'user_name', 'password', 'is_admin'],
       where: whereOpt,
     })
-    return res ? res.dataValues : {}
+    return res ? res.dataValues : null
   }
 }
 module.exports = new UserService()
