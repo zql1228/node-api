@@ -50,6 +50,7 @@ class UserController {
     //3.返回结果
   }
   async login(ctx, next) {
+    const { user_name } = ctx.require.body
     ctx.body = '登录成功'
   }
 }

@@ -14,4 +14,14 @@ module.exports = {
     messge: '注册错误',
     result: '',
   },
+  userDoesNotExist: {
+    code: '10004',
+    messge: '用户不存在',
+    result: '',
+  },
+  userLoginError: {
+    code: '10004',
+    messge: '用户登录错误',
+    result: '',
+  },
 }

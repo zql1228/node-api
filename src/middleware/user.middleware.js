@@ -1,6 +1,6 @@
 const app = require('../app')
 const { getUserInfo } = require('../service/user.service')
-const { userFormateError, userAlreadyExisted, userRegisterError } = require('../constant/err.type')
+const { userFormateError, userAlreadyExisted, userLoginError } = require('../constant/err.type')
 const bcrypt = require('bcryptjs')
 const userValidator = async (ctx, next) => {
   const { user_name, password } = ctx.request.body
@@ -33,8 +33,25 @@ const crpytPassword = async (ctx, next) => {
   ctx.request.body.password = hash
   await next()
 }
+const verifyLogin = async (ctx, next) => {
+  const { user_name, password } = ctx.request.body
+  // 1判断用户是否存在
+  try {
+    const res = getUserInfo({ user_name })
+    if (!res) {
+      console.log('error')
+      return ctx.app.emit('error', userLoginError, ctx)
+    }
+  } catch (error) {
+    console.log(error)
+  }
+
+  // 判断密码是否匹配
+  await next()
+}
 module.exports = {
   userValidator,
   verifyUser,
   crpytPassword,
+  verifyLogin,
 }
