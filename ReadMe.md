@@ -235,14 +235,65 @@ class UserController {
 module.exports = new UserController()
 ```
 
-六.解析body
+# 六.解析body
 
-1.安装 koa-body
+## 1.安装 koa-body
 
 ```
 npm i koa-body
 ```
 
-2.注册中间件
+## 2.注册中间件
 
 改写`app/index.js`
+
+![image-20220523093852204](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220523093852204.png)
+
+## 3.解析请求数据
+
+改写usr.controller.js
+
+```javascript
+const { createUser } = require('../service/user.service')
+
+class UserController {
+
+ async register(ctx, next) {
+
+  const res = createUser(ctx.username, ctx.password)
+
+  ctx.body = '用户注册成功'
+
+ }
+
+ async login(ctx, next) {
+
+  ctx.body = '登录成功'
+
+ }
+}
+module.exports = new UserController()
+```
+
+## 4.拆分service层
+
+service层主要是做数据库处理
+
+```javascript
+创建src/service/user.service.js
+
+class UserService {
+
+ async createUser(user_name, password) {
+
+  //todo:写入数据库
+
+  return '写入数据库成功'
+
+ }
+
+}
+
+module.exports = new UserService()
+```
+
