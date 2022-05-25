@@ -1,9 +1,10 @@
 const jwt = require('jsonwebtoken')
 const { JWT_SECRET } = require('../config/config.default')
-const { TokenExpiredError, InvalidSignature, hadNotAdminPremisson } = require('../constant/err.type')
+const { TokenExpiredError, InvalidSignature, hasNotAdminPremisson } = require('../constant/err.type')
 const auth = async (ctx, next) => {
   //权限
-  const { authorization } = ctx.request.header
+  const { authorization = '' } = ctx.request.header
+  // console.log(authorization)
   const token = authorization.replace('Bearer ', '')
   try {
     const user = jwt.verify(token, JWT_SECRET)
@@ -21,10 +22,10 @@ const auth = async (ctx, next) => {
   await next()
 }
 const hasAdminPremisson = async (ctx, next) => {
-  const user = ctx.state.user
-  if (!user.is_admin) {
+  const { is_admin } = ctx.state.user
+  if (!is_admin) {
     console.error('没有权限')
-    ctx.app.emit('error', hasNotAdminPremisson, ctx)
+    return ctx.app.emit('error', hasNotAdminPremisson, ctx)
   }
   await next()
 }

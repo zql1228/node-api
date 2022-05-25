@@ -4,3 +4,4 @@ const { auth, hasAdminPremisson } = require('../middleware/auth.middleware')
 const { upload } = require('../controller/goods.controller')
 
 router.post('/upload', auth, hasAdminPremisson, upload)
+module.exports = router

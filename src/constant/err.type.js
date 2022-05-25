@@ -44,4 +44,14 @@ module.exports = {
     messge: '没有权限',
     result: '',
   },
+  fileUploadError: {
+    code: '10201',
+    messge: '图片上传失败',
+    result: '',
+  },
+  unSupportedFileType: {
+    code: '10202',
+    messge: '不支持的文件格式',
+    result: '',
+  },
 }

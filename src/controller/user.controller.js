@@ -30,7 +30,6 @@ class UserController {
     //3.返回结果
   }
   async login(ctx, next) {
-    console.log('/////////////')
     const { user_name } = ctx.request.body
     // 1.获取用户信息
     try {
