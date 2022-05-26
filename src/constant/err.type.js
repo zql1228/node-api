@@ -54,4 +54,9 @@ module.exports = {
     messge: '不支持的文件格式',
     result: '',
   },
+  goodsFormatError: {
+    code: '10203',
+    messge: '商品参数格式错误',
+    result: '',
+  },
 }

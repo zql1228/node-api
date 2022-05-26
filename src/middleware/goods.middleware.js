@@ -1,3 +1,4 @@
+const { goodsFormatError } = require('../constant//err.type')
 const validator = async (ctx, next) => {
   try {
     ctx.verifyParams({
@@ -8,6 +9,8 @@ const validator = async (ctx, next) => {
     })
   } catch (error) {
     console.log(error)
+    goodsFormatError.result = error
+    return ctx.app.emit('error', goodsFormatError, ctx)
   }
 }
 module.exports = {
