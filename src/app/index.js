@@ -2,6 +2,7 @@ const path = require('path')
 const Koa = require('koa')
 const koaBody = require('koa-body')
 const koaStatic = require('koa-static')
+const parameter = require('koa-parameter')
 const errHandler = require('./errHandler')
 // const useRouter = require('../router/user.route')
 const router = require('../router')
@@ -18,6 +19,7 @@ app.use(
 )
 app.use(koaStatic(path.join(__dirname, '../upload')))
 app.use(router.routes())
+app.use(parameter(app))
 //统一错误处理
 app.on('error', errHandler)
 module.exports = app
