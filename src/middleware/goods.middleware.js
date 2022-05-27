@@ -12,6 +12,7 @@ const validator = async (ctx, next) => {
     goodsFormatError.result = error
     return ctx.app.emit('error', goodsFormatError, ctx)
   }
+  await next()
 }
 module.exports = {
   validator,

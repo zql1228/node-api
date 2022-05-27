@@ -59,4 +59,19 @@ module.exports = {
     messge: '商品参数格式错误',
     result: '',
   },
+  uploadGoodsError: {
+    code: '10204',
+    messge: '发布商品失败',
+    result: '',
+  },
+  updateGoodsError: {
+    code: '10205',
+    messge: '修改商品失败',
+    result: '',
+  },
+  invalidGoodsID: {
+    code: '10206',
+    messge: '无效的商品id',
+    result: '',
+  },
 }
