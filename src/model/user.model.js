@@ -22,5 +22,5 @@ const User = seq.define('zd_user', {
     commit: '0 普通管理员 1，超级管理员',
   },
 })
-// User.sync({ force: true }) //强制同步数据库
+  // User.sync({ force: true }) //强制同步数据库
 module.exports = User

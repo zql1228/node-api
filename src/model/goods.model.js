@@ -30,5 +30,5 @@ const Goods = seq.define(
     paranoid: true, //软删除
   }
 )
-// Goods.sync({ force: true }) //强制同步数据库
+//  Goods.sync({ force: true }) //强制同步数据库
 module.exports = Goods
