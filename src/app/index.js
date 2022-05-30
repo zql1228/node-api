@@ -15,6 +15,7 @@ app.use(
       uploadDir: path.join(__dirname, '../upload'), //保存位置
       keepExtensions: true, //是否保留文件扩展名
     },
+    parsedMethods: ['POST', 'PUT', 'PATCH', 'DELETE'],
   })
 )
 app.use(koaStatic(path.join(__dirname, '../upload')))

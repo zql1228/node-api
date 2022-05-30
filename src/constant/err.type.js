@@ -74,10 +74,14 @@ module.exports = {
     messge: '无效的商品id',
     result: '',
   },
-  cartFormateError:{
-    code:'10301',
-    message:'购物车数据格式错误',
-    result:''
-
-  }
+  cartFormateError: {
+    code: '10301',
+    message: '购物车数据格式错误',
+    result: '',
+  },
+  addrFormateError: {
+    code: '10401',
+    message: '地址格式错误',
+    result: '',
+  },
 }
